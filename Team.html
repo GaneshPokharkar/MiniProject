@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 5px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center; 
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 100px;
+            width: 350px;
+            object-fit: contain;
+        }
+
+        .navbar {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .navbar a:hover {
+            background: linear-gradient(to right, #010122, #00000e);
+            color: #ffffff;
+            border-radius: 40%;
+            transform: scale(1.1);
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .team-list {
+            margin-top: 50px;
+        }
+
+        .team-member {
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+        }
+
+        .team-member .name {
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .conveners, .secretaries {
+            display: flex;
+            justify-content: center;
+        }
+
+        .update-form {
+            margin-top: 30px;
+        }
+
+        .update-form input, .update-form button, .update-form select {
+            padding: 10px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="bgv.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <img src="logo.png" alt="Club Logo" class="logo">
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="Team.html">Team</a>
+            <a href="sponsors.html">Sponsors</a>
+            <a href="stories.html">Stories</a> 
+            69999998
+            <a href="about-us.html">About Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Our Team</h1>
+      
+        <div class="team-list">
+            <h2>Conveners</h2>
+            <div class="conveners">
+                <div class="team-member" id="convener1">
+                    <div class="name">John Doe</div>
+                </div>
+                
+            </div>
+            <h2>Start-Up Connect Secretaries</h2>
+            <div class="secretaries">
+                <div class="team-member" id="secretary1">
+                    <div class="name">Alice Johnson</div>
+                </div>
+                <div class="team-member" id="secretary2">
+                    <div class="name">Bob Brown</div>
+                </div>
+            </div>
+        </div>
+        <div class="update-form">
+            <h2>Update Team Members</h2>
+            <form id="updateTeamForm">
+                <select id="memberRole">
+                    <option value="convener1">Convener 1</option>
+           
+                    <option value="secretary1">Secretary 1</option>
+                    <option value="secretary2">Secretary 2</option>
+                </select>
+                <input type="text" id="newMemberName" placeholder="New Member Name" required>
+                <button type="submit">Update Member</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const roles = ['convener1', 'secretary1', 'secretary2'];
+            roles.forEach(role => {
+                const savedName = localStorage.getItem(role);
+                if (savedName) {
+                    document.getElementById(role).querySelector('.name').textContent = savedName;
+                }
+            });
+        });
+
+        document.getElementById('updateTeamForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedRole = document.getElementById('memberRole').value;
+            const newName = document.getElementById('newMemberName').value;
+            const memberDiv = document.getElementById(selectedRole);
+            memberDiv.querySelector('.name').textContent = newName;
+            localStorage.setItem(selectedRole, newName);
+            document.getElementById('updateTeamForm').reset();
+        });
+    </script>
+</body>
+</html>

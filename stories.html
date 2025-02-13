@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            padding: 5px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+            display: flex;
+            align-items: center; 
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 100px;
+            width: 350px;
+            object-fit: contain;
+        }
+
+        .navbar {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .navbar a:hover {
+            background: linear-gradient(to right, #010122, #00000e);
+            color: #ffffff;
+            border-radius: 40%;
+            transform: scale(1.1);
+        }
+
+        .container {
+            text-align: center;
+            padding-top: 150px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .blog-card {
+            display: flex;
+            background: linear-gradient(to right, #000000, #434343);
+            border-radius: 20px;
+            margin: 20px;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            align-items: center;
+            position: relative;
+        }
+
+        .blog-card img {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .blog-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .blog-content h2 {
+            margin: 0 0 10px 0;
+        }
+
+        .blog-content p {
+            margin: 0 0 10px 0;
+        }
+
+        .read-more {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            background-color: #555;
+        }
+
+        .delete-story {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff3333;
+            color: #ffffff;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .delete-story:hover {
+            background-color: #ff5555;
+        }
+
+        .upload-button {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .upload-button:hover {
+            background-color: #555;
+        }
+
+        .upload-form {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .upload-form input, .upload-form textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            max-width: 500px;
+            background-color: #333;
+            color: #ffffff;
+            border: 1px solid #555;
+            border-radius: 5px;
+        }
+
+        .upload-form button {
+            background-color: #333;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .upload-form button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="bgv.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header>
+        <img src="logo.png" alt="Club Logo" class="logo">
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="Team.html">Team</a>
+            <a href="sponsors.html">Sponsors</a>
+            <a href="stories.html">Stories</a>
+            <a href="about-us.html">About Us</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Our Stories</h1>
+        <div class="blog-card">
+            <img src="esummit.png" alt="Story 1">
+            <div class="blog-content">
+                <h2>E-Summit 24</h2>
+                <p class="short-text">E-Summit, the flagship event of VIT Pune's Entrepreneurship Development Cell (V-EDC), celebrates entrepreneurial spirit and innovation. The event brings together aspiring entrepreneurs, industry leaders, and mentors for keynote speeches, panel discussions, workshops, and networking opportunities, all designed to inspire and equip participants for success...</p>
+                <p class="full-text" style="display: none;">E-Summit, the flagship event of VIT Pune's Entrepreneurship Development Cell (V-EDC), celebrates entrepreneurial spirit and innovation. The event brings together aspiring entrepreneurs, industry leaders, and mentors for keynote speeches, panel discussions, workshops, and networking opportunities, all designed to inspire and equip participants for success. Focusing on emerging trends and innovation. E-Summit equips attendees with practical insights and strategies, igniting their entrepreneurial drive and providing them with the clarity and confidence to navigate their journey toward success.</p>
+                <button class="read-more" onclick="toggleText(this)">Read More</button>
+            </div>
+        </div>
+        <div class="blog-card">
+            <img src="earn and sell.jpg" alt="Story 2">
+            <div class="blog-content">
+                <h2>Earn n Sell 2025</h2>
+                <p class="short-text">Earn and Sell, organized by VIT Pune's Entrepreneurship Development Cell, offers a platform for aspiring entrepreneurs to showcase their skills and innovation....</p>
+                <p class="full-text" style="display: none;">Earn and Sell, organized by VIT Pune's Entrepreneurship Development Cell, offers a platform for aspiring entrepreneurs to showcase their skills and innovation. The event kicks off with a workshop by industry experts, providing insights into creating impactful business plans. In Round 1, teams pitch their ideas for a chance to secure investments,
+                     while the grand finale sees the top teams battle it out with creativity and strategy. More than just a competition, Earn and Sell celebrates entrepreneurial spirit, fostering growth, innovation, and business excellence.</p>
+                <button class="read-more" onclick="toggleText(this)">Read More</button>
+            </div>
+        </div>
+        <button class="upload-button" onclick="showUploadForm()">Upload Your Story</button>
+        <div class="upload-form" id="uploadForm">
+            <input type="text" id="storyTitle" placeholder="Story Title" required>
+            <input type="file" id="storyImage" accept="image/*" required>
+            <textarea id="storyContent" placeholder="Story Content" rows="5" required></textarea>
+            <input type="email" id="storyEmail" placeholder="Your Email" required>
+            <button onclick="submitStory()">Submit</button>
+        </div>
+    </div>
+    <script>
+        (function() {
+            emailjs.init("bjagdtylz");
+        })();
+
+        function toggleText(button) {
+            const card = button.closest('.blog-card');
+            const shortText = card.querySelector('.short-text');
+            const fullText = card.querySelector('.full-text');
+            if (fullText.style.display === 'none') {
+                fullText.style.display = 'block';
+                shortText.style.display = 'none';
+                button.textContent = 'Read Less';
+            } else {
+                fullText.style.display = 'none';
+                shortText.style.display = 'block';
+                button.textContent = 'Read More';
+            }
+        }
+
+        function showUploadForm() {
+            document.getElementById('uploadForm').style.display = 'flex';
+        }
+
+        function submitStory() {
+            const title = document.getElementById('storyTitle').value;
+            const image = document.getElementById('storyImage').files[0];
+            const content = document.getElementById('storyContent').value;
+            const email = document.getElementById('storyEmail').value;
+
+            if (title && image && content && email) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newStory = document.createElement('div');
+                    newStory.className = 'blog-card';
+                    newStory.innerHTML = `
+                        <img src="${e.target.result}" alt="${title}">
+                        <div class="blog-content">
+                            <h2>${title}</h2>
+                            <p class="short-text">${content.substring(0, 100)}...</p>
+                            <p class="full-text" style="display: none;">${content}</p>
+                            <button class="read-more" onclick="toggleText(this)">Read More</button>
+                            <button class="delete-story" onclick="deleteStory(this)">Delete</button>
+                        </div>
+                    `;
+                    document.querySelector('.container').insertBefore(newStory, document.querySelector('.upload-button'));
+                    document.getElementById('uploadForm').reset();
+                    document.getElementById('uploadForm').style.display = 'none';
+                    alert("Your story has been uploaded and an email has been sent to all students at vitpune@gmail.com.");
+                    sendEmail(title, content, email);
+                };
+                reader.readAsDataURL(image);
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+
+        function deleteStory(button) {
+            const card = button.closest('.blog-card');
+            card.remove();
+            alert("The story has been deleted.");
+        }
+
+        function sendEmail(title, content, email) {
+            emailjs.send("Ganesh15878", " bzijlt", {
+                to_email: "vitpune@gmail.com",
+                to_name: "Student",
+                message: `Title: ${title}\n\n${content}`
+            }).then(function(response) {
+                console.log('Email sent successfully:', response.status, response.text);
+            }, function(error) {
+                console.error('Error sending email:', error);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const fullTexts = document.querySelectorAll('.full-text');
+            fullTexts.forEach(text => text.style.display = 'none');
+        });
+    </script>
+</body>
+</html>
